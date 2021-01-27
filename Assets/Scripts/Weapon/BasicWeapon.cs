@@ -34,6 +34,8 @@ public class BasicWeapon : Weapon, AutoWeapon
         Bullet bullet = go.GetComponent<Bullet>();
 
         bullet.Shoot(aimAngle);
+
+        CameraManager.GetInstance.GetCamera("BloomCamera");
     }
 
 }

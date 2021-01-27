@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour, Controlable
 {
-    public float speed = 1;
+    public float speed = 10;
 
     public Weapon weapon;
 
     private void Start()
     {
-        Controller.GetInstance.controlTarget = this;
+        Controller.GetInstance.SetControlTarget(this, gameObject);
     }
 
     public void ControlMove(float angle)

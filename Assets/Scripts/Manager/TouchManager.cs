@@ -4,18 +4,12 @@ using UnityEngine;
 
 public class TouchManager : SingletonClass<TouchManager>
 {
-    private Camera uiCam;
+    private ICamera uiCam;
     private Touchable touchable;
     private RectTransform rt;
     private void Start()
     {
-        foreach(Camera cam in Camera.allCameras)
-        {
-            if (cam.name == "UiCamera")
-            {
-                uiCam = cam;
-            }
-        }
+        uiCam = CameraManager.GetInstance.GetCamera("UiCamera");
     }
 
     private void Update()
@@ -44,7 +38,7 @@ public class TouchManager : SingletonClass<TouchManager>
             }
             else
             {
-                if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(rt, Input.mousePosition, uiCam, out Vector2 localCursor))
+                if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(rt, Input.mousePosition, uiCam.camera, out Vector2 localCursor))
                     return;
 
                 touchable.Touch(localCursor);

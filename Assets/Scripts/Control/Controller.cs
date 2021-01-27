@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class Controller : SingletonClass<Controller>
 {
     public Controlable controlTarget;
+    public GameObject controlTargetObj;
 
     public Joystick rightJoystick;
     public Joystick leftJoystick;
@@ -17,5 +18,11 @@ public class Controller : SingletonClass<Controller>
 
         if (rightJoystick.onTouch)
             controlTarget.ControlAim(rightJoystick.JoystickAngle());
+    }
+
+    public void SetControlTarget(Controlable target, GameObject targetObj)
+    {
+        controlTarget = target;
+        controlTargetObj = targetObj;
     }
 }
